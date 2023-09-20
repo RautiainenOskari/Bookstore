@@ -16,6 +16,13 @@
 			<input type="text" id="author" th:field="*{author}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
+			<div class="form-group">
+    <label for="category">Category</label>
+    <select th:field="*{category}" class="form-control">
+        <option th:each="category : ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    </select>
+</div>
+			
 			<label for="isbn">ISBN</label>
 			<input type="text" id="isbn" th:field="*{isbn}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
