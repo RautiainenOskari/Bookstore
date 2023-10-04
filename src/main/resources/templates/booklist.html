@@ -6,6 +6,7 @@
 </head>
 <body>
 	<h1>Books</h1>
+	<h2>Hello <span sec:authentication="name"></span>!</h2>
 	<table>
 		<tbody>
 		<tr>
@@ -23,12 +24,12 @@
 				<td th:text="${book.isbn}"></td>
 				<td th:text="${book.ReleaseYear}"></td>
 				<td th:text="${book.price}"></td>
-				<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
-				<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
 			</tr>
 		</tbody>
 	</table>
-	<a href="add" sec:authorize="hasRole('ADMIN')">Add Book</a>
+	<a href="add" sec:authorize="hasAuthority('ADMIN')">Add Book</a>
 	<form th:action="@{/logout}" method="post">
 	<input type="submit" value="Sign out" class="btn btn-sm btn-danger"/>
 	</form>
